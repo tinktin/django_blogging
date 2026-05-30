@@ -34,4 +34,3 @@ class Blog(models.Model):
         return self.title
 
 
-# 1 hr 6 min
