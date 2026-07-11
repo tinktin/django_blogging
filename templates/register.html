@@ -1,11 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
+<style>
+    .errorlist{
+        list-style-type: none;
+        color: red;
+        font-size: 10px;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
 
 <h3 class="text-center">Register</h3>
-<form action="{% url 'register' %}" method="POST" style="width:500px; margin:auto;">
+<form action="{% url 'register' %}" method="POST" class="text-center form-control" style="width:500px; margin:auto;">
     {% csrf_token %}
-    {{ form | crispy }}
+    {{form.non_field_errors}}
+    {% for field in form %}
+    <div>
+    {{field.label_tag}} <br>{{field}}<br>
+    {% for error in field.errors %}
+    <span class="errorlist">{{error}}</span>
+    {% endfor %}
+    </div>
+    {% endfor %}
+    <!-- {{ form | crispy }} -->
+      <br>
     <button type="submit" class="btn btn-warning">Submit</button>
 </form>
 {% endblock %}

@@ -134,3 +134,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'
 
 CRISPY_TEMPLATE_PACK = 'Bootstrap4'
+
+## to avoid django built in password validators when you are using usercreation form for registration
+AUTH_PASSWORD_VALIDATORS = []
